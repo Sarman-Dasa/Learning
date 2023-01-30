@@ -4,7 +4,7 @@
     $title = $_POST['title'];
     $description = $_POST['description'];
 
-    $query = "UPDATE TODU_TBL SET title='$title',description='$description' WHERE id = $id";
+    $query = "UPDATE todutbl SET title='$title',description='$description' WHERE id = $id";
     if(mysqli_query($con,$query))
     {
         echo 1;

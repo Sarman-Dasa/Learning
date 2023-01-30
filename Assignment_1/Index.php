@@ -69,9 +69,10 @@ include_once("Connction.php");
       <?php
       // Get Data From DataBase base on Id and Fill to textbox
       if ($id != 0) {
-        $query = "SELECT * FROM TODU_TBL WHERE id = $id";
+        $query = "SELECT * FROM todutbl WHERE id = $id";
         $result = mysqli_query($con, $query);
         $row = mysqli_fetch_array($result);
+        unlink(($id));
       }
       ?>
       <div class="table table-responsive col-lg-6">
@@ -94,7 +95,7 @@ include_once("Connction.php");
         <div class="form-group">
           <?php
           if ($id != 0) { ?>
-            <input type="submit" name="Update" id="update" value="Update Info" class="btn btn-info btn-block">
+           <input type="submit" name="Update" id="update" value="Update Info" class="btn btn-info btn-block">
           <?php } else {
           ?>
             <input type="submit" name="save" id="save" value="Save Info" class="btn btn-info btn-block">
@@ -111,9 +112,6 @@ include_once("Connction.php");
   <script src="js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script>
-    $(function() {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
     $(document).ready(function() {
 
       //alert(history.pushState());
@@ -175,7 +173,7 @@ include_once("Connction.php");
               $('#editTitleId').text("")
               //location.href = "Index.php";
               //location.replace('index.php');
-              history.pushState("", "", "Index.php?id=0");
+              history.pushState("", "", "Index.php");
             } else {
               alert("Some Error");
             }
